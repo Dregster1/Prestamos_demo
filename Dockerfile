@@ -1,14 +1,11 @@
 FROM php:8.2-cli
 
-# Instalar extensiones necesarias para SQLite
-RUN docker-php-ext-install pdo pdo_sqlite
-
-# Copiar todo el proyecto
+# Copia tu proyecto al contenedor
 COPY . /app
 WORKDIR /app
 
-# Exponer el puerto esperado por Railway
+# Expone el puerto 3000 para Railway
 EXPOSE 3000
 
-# Iniciar el servidor PHP en el puerto correcto
+# Inicia el servidor embebido de PHP en el puerto 3000
 CMD ["php", "-S", "0.0.0.0:3000", "index.php"]
